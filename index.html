@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-  <meta name="keywords" content="template, sample, html">
+        content="Analysis of the inverse relationship between population size and trade dependency.">
+  <meta name="keywords" content="Economics, Trade Dependency, Population, GDP, Data Visualization">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Fancy Project</title>
+  <title>Population Size vs. Trade Dependency</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -23,13 +23,13 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">A Fancy Project Title</h1>
+          <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse Relationship</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              John Doe<sup>1</sup> and
+              Jaemin Kim<sup>1</sup> and
             </span>
             <span class="author-block">
-              Jane Smith<sup>1</sup>
+              Taegyu Hwang<sup>1</sup>
             </span>
           </div>
 
@@ -45,12 +45,13 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>This is a template AI-generated text. This section contains a comprehensive introduction to the project’s core ideas and motivations. It presents the reader with an engaging overview of what the work is about, why it matters, and how it fits into the broader field. The text here outlines the key problem being addressed, highlights the opportunities and challenges, and sets the stage for the detailed developments in the following sections. It provides context by summarizing prior work or commonly encountered limitations, and articulates the unique contributions or novel approaches proposed. The narrative also emphasizes the potential impact of the project, both theoretically and practically, and may hint at empirical results or illustrative examples that will come later. By the end of this section, the reader should have a clear mental roadmap of what to expect: the objectives, the methodology, and the significance of the outcomes.</p>
+          <p>
+            This study explores how population size affects a country's level of trade dependency. Using data from 211 countries in 2023 obtained from the World Bank, we investigate whether smaller economies tend to be more dependent on international trade than larger ones. The analysis measures trade dependency as the ratio of exports and imports to GDP. The results show a clear negative relationship between population size and trade openness: countries with smaller populations, such as Luxembourg and Singapore, exhibit significantly higher trade dependence, while large economies like the United States or China are relatively self-sufficient. These findings suggest that domestic market size plays a crucial role in shaping a nation's reliance on global trade and provide empirical evidence supporting the hypothesis that smaller economies are inherently more trade-dependent rather than gaining money within their own countries.
+          </p>
         </div>
       </div>
     </div>
@@ -59,75 +60,114 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-<h2 class="title is-3 has-text-centered">A Catchy Title for the First Section</h2>
+    <h2 class="title is-3 has-text-centered">Background</h2>
+    
+    <div class="content has-text-justified">
+      <h4 class="title is-4">What is Trade Dependency?</h4>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt lectus quis libero interdum, non facilisis sapien aliquet. Sed sit amet ex hendrerit, dignissim purus sit amet, blandit est. Integer nec mauris at dolor egestas volutpat. Quisque efficitur metus vitae dolor fermentum, quis varius neque consectetur.
+        Trade dependence is the extent to which a country's economy relies on international trade for its growth and stability, often indicated by the share of trade in national income. There are several methods for determining the level of trade dependency. The most common method is the ratio (%) of trade to GDP. This ratio illustrates the relative importance of international trade in the economy of a country.
       </p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <figure class="image has-text-centered">
+          <img src="./static/images/trade_map.jpg" alt="Global Trade Dependency Map">
+          <figcaption class="is-size-6 has-text-grey">
+            Figure 1. Global Map of Trade Dependency (Trade % of GDP).
+          </figcaption>
+        </figure>
+      </div>
+      <div class="column">
+        <figure class="image has-text-centered">
+          <img src="./static/images/population_map.jpg" alt="Global Population Map">
+          <figcaption class="is-size-6 has-text-grey">
+            Figure 2. Global Map of Population Size.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        By comparing these two visualizations, we can begin to observe patterns where regions with high population density may differ in their trade intensity compared to smaller nations.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Data & Methodology</h2>
+    <div class="content has-text-justified">
+      <p>
+        The dataset for this analysis was obtained from the World Bank's World Development Indicators. We utilized data from 2023 covering 211 countries. The key variables used in this study are:
+      </p>
+      <ul>
+        <li><strong>Population:</strong> Total population of the country (Log-transformed for analysis).</li>
+        <li><strong>Trade (% of GDP):</strong> The sum of exports and imports of goods and services measured as a share of gross domestic product.</li>
+      </ul>
+      <p>
+        To analyze the relationship, we performed a regression analysis using the log10 of population size as the independent variable and the Trade-to-GDP ratio as the dependent variable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results: The Negative Correlation</h2>
+    
     <figure class="image has-text-centered">
-        <img src="./static/images/Template_bar.png"
-       alt="Playfair 1801 chart"
-       class="img-small75"
-       style="display: inline-block; width: 75%; height: auto;">
+      <img src="./static/images/scatter_plot.jpg" 
+           alt="Scatter plot of Trade vs Population"
+           style="display: inline-block; width: 80%; height: auto;">
       <figcaption class="is-size-6 has-text-grey">
-        Figure 1. Visual representation of the project’s workflow using the template bar.
+        Figure 3. Scatter plot showing the relationship between Population (Log scale) and Trade Dependency (% of GDP). The red dotted line represents the regression line: <em>y = -26.79 * log10(x) + 279.54</em>.
       </figcaption>
     </figure>
+
     <div class="content has-text-justified">
       <p>
-        Curabitur suscipit urna ut felis vulputate, nec dictum orci vehicula. Mauris aliquet, nunc et dignissim tincidunt, urna est tempus lacus, ut suscipit ex tellus a ipsum. Donec pretium tempor justo vitae molestie. Fusce ullamcorper leo id purus sodales, at cursus felis lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        The scatter plot above illustrates the trade ratio on a linear scale starting from 0%. The red dotted regression line is $y = -26.79 * \log_{10}(x) + 279.54$. This regression line shows a negative correlation trend, indicating that countries with larger populations tend to have a lower trade-to-GDP ratio. 
+      </p>
+      <p>
+        The $R^2$ (coefficient of determination) value is <strong>0.167</strong>, meaning that population (log value) explains approximately 16.7% of the variation in a country's trade dependence. While this value suggests that other factors also play a significant role, the negative trend is statistically observable.
       </p>
     </div>
   </div>
 </section>
 
-
 <section class="section">
-<div class="container is-max-desktop">
-  <div class="columns is-centered">
-
-    <!-- Feature A -->
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-3 has-text-centered">Feature A</h2>
-        <p>
-          In this section, we introduce Feature A, a core component of the project that plays a pivotal role in achieving the overall goals. The importance of this feature stems from its ability to bridge critical gaps in existing workflows, deliver performance enhancements, and unlock new possibilities for visualization, analysis, or interactivity.
-        </p>
-        <!-- Optional media/image/video goes here -->
-        <!-- <img src="./static/images/featureA.png" alt="Feature A illustration"> -->
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Comparative Analysis: Small vs. Large Economies</h2>
+    
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <figure class="image has-text-centered">
+            <img src="./static/images/barplot.png" alt="Bar plot comparing trade dependency">
+            <figcaption class="is-size-6 has-text-grey">
+              Figure 4. Comparison of Trade Dependency between selected small and large population countries.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <figure class="image has-text-centered">
+            <img src="./static/images/boxplot.png" alt="Box plot distribution">
+            <figcaption class="is-size-6 has-text-grey">
+              Figure 5. Distribution of Trade Dependency across population quartiles.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </div>
-    <!-- /Feature A -->
-
-    <!-- Feature B -->
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-3 has-text-centered">Feature B</h2>
-        <p>
-          Feature B is also important. In this section, we introduce Feature B, another core component of the project that plays a pivotal role in achieving the overall goals. The importance of this feature stems from its ability to bridge critical gaps in existing workflows, deliver performance enhancements, and unlock new possibilities for visualization, analysis, or interactivity.
-        </p>
-        <!-- Optional media/image/video goes here -->
-        <!-- <img src="./static/images/featureB.png" alt="Feature B illustration"> -->
-      </div>
-    </div>
-    <!-- /Feature B -->
-
-  </div>
-</div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-<h2 class="title is-3 has-text-centered">Another Catchy Title for the Second Section</h2>
-    <figure class="image has-text-centered">
-      <img src="./static/images/waterfall_example.png" alt="Template bar illustration">
-<figcaption class="is-size-6 has-text-grey">
-  Figure 2. Waterfall chart, which shows the cumulative breakdown of changes (positive and negative) across different categories, illustrating how each step contributes to the final total.  
-</figcaption>
-    </figure>
 
     <div class="content has-text-justified">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt lectus quis libero interdum, non facilisis sapien aliquet. Sed sit amet ex hendrerit, dignissim purus sit amet, blandit est. Integer nec mauris at dolor egestas volutpat. Quisque efficitur metus vitae dolor fermentum, quis varius neque consectetur. Curabitur suscipit urna ut felis vulputate, nec dictum orci vehicula. Mauris aliquet, nunc et dignissim tincidunt, urna est tempus lacus, ut suscipit ex tellus a ipsum. Donec pretium tempor justo vitae molestie. Fusce ullamcorper leo id purus sodales, at cursus felis lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        Further analysis supports the initial findings. Countries with smaller populations, such as Luxembourg and Singapore, exhibit significantly higher trade dependence. In contrast, large economies like the United States or China are relatively self-sufficient, relying more on their internal markets. This suggests that domestic market size is a key determinant of how much a nation relies on the global market.
       </p>
     </div>
   </div>
@@ -135,55 +175,28 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-<h2 class="title is-3 has-text-centered">Another Catchy Title for the Third Section</h2>
-    <figure class="image has-text-centered">
-<div style="text-align: center;">
-  <img src="./static/images/P_05-playfair-1801-plate1.png"
-       alt="Playfair 1801 chart"
-       class="img-small75"
-       style="display: inline-block; width: 75%; height: auto;">
-</div>
-<figcaption class="is-size-6 has-text-grey">
-  Figure 3. William Playfair's 1801 'Chart of the Extent, Population and Revenue of the Principal Nations of Europe.' The central pie displays each nation's share of European land area, while red and yellow radial bars show, respectively, population size and annual government revenue. First printed in <em>The Statistical Breviary</em>, it is widely regarded as the earliest known multi-slice pie chart and highlights the contrast between territorial extent, demographic weight, and fiscal power.
-</figcaption>
-
-    </figure>
-
+    <h2 class="title is-3 has-text-centered">Discussions</h2>
     <div class="content has-text-justified">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt lectus quis libero interdum, non facilisis sapien aliquet. Sed sit amet ex hendrerit, dignissim purus sit amet, blandit est. Integer nec mauris at dolor egestas volutpat. Quisque efficitur metus vitae dolor fermentum, quis varius neque consectetur. Curabitur suscipit urna ut felis vulputate, nec dictum orci vehicula. Mauris aliquet, nunc et dignissim tincidunt, urna est tempus lacus, ut suscipit ex tellus a ipsum. Donec pretium tempor justo vitae molestie. Fusce ullamcorper leo id purus sodales, at cursus felis lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        As can be seen from the graph in the results, population and trade dependency have a negative relationship. This result is presumed because a larger population enables a country to sustain itself with less trade by using its large domestic market.
+      </p>
+      <p>
+        The R-squared value between the two factors is 0.167. Although this value may seem low, in social science research, this level of R-squared value can show a meaningful relationship. This study confirms the negative relationship between population size and trade dependency, which allows one to predict how much a country's economic performance is influenced by trade, by the size of its population.
+      </p>
+      <p>
+        Also, this implies that there is another factor involved in deciding the trade dependency. Future research could investigate what these other factors are and why population and trade dependency have a negative relationship.
       </p>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Outro</h2>
-    <div class="content">
-      <p>
-        This is the last section. In this part, we bring together all the ideas explored throughout the project, reflecting on what was learned, what worked well, and what challenges emerged. We revisit the core objectives, summarizing how each was addressed, and highlight the most significant insights that have arisen from the work. Moreover, we outline how the outcomes contribute to the broader field, what implications they may have for future research or real-world applications, and why these findings matter. In addition, this section proposes concrete next steps: further experiments, methods refinement, validation on new datasets, collaborative extensions, or deployment scenarios. We also discuss potential limitations, acknowledge open questions, and suggest areas that merit deeper investigation.
-      </p>
-    </div>
-  </div>
-</section>
-
-  <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">References and Data Sources</h2>
     <div class="content has-text-justified">
-  <p>  
-    1. Black, Joe; Doe, Jane; and Lee, Maria. “Template Paper Title on Data Analysis.” <em>Journal of Data Analysis & Visualization</em> 30, no. 1 (2023): 100-120.  
-  </p>
-  <p>  
-    2. White, Chris; Green, Anna; and Kim, Sam. “Template Methods for Interactive Dashboards.” <em>International Journal of Interactive Visualization</em> 25, no. 2 (2022): 210-234.  
-  </p>
-  <p>  
-    3. Miller, Pat; Gomez, Sofia; and Zhang, Lin. “Template Techniques for Labels & Annotation in Multidimensional Graphs.” <em>Computational Graphics & Data Systems</em> 12, no. 3 (2024): 45-70.  
-  </p>
-  <p>  
-    4. Wright, Ben; Park, Soo; and O’Neil, Pat. “Template Approaches to Temporal Flow Visualization.” <em>Decision Support & Data Analytics</em> 14, no. 3 (2021): 300-320.  
-  </p>
+      <p>
+        1. World Bank. (2023). <em>World Development Indicators: Exports of goods and services - Imports of goods and services - Population - Trade.</em> Retrieved from <a href="https://data.worldbank.org" target="_blank">https://data.worldbank.org</a>.
+      </p>
     </div>
   </div>
 </section>
@@ -206,7 +219,5 @@
   </div>
 </footer>
 
-
 </body>
 </html>
-
