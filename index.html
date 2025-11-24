@@ -79,4 +79,226 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse
+          <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse Relationship</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Jaemin Kim and</span>
+            <span class="author-block">Taegyu Hwang</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">George Mason University Korea</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns">
+      
+      <div class="column is-3 is-hidden-mobile">
+        <aside class="menu sticky-toc">
+          <p class="menu-label">Table of Contents</p>
+          <ul class="menu-list">
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#discussions">Discussions</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="column is-9">
+        
+        <div id="abstract" class="content has-text-justified">
+          <h2 class="title is-3">Abstract</h2>
+          <p>
+            This study explores how population size affects a country's level of trade dependency. Using data from 211 countries in 2023 obtained from the World Bank, we investigate whether smaller economies tend to be more dependent on international trade than larger ones. The analysis measures trade dependency as the ratio of exports and imports to GDP. The results show a clear negative relationship between population size and trade openness: countries with smaller populations, such as Luxembourg and Singapore, exhibit significantly higher trade dependence, while large economies like the United States or China are relatively self-sufficient. These findings suggest that domestic market size plays a crucial role in shaping a nation's reliance on global trade and provide empirical evidence supporting the hypothesis that smaller economies are inherently more trade-dependent rather than gaining money within their own countries.
+          </p>
+        </div>
+
+        <hr class="section-divider">
+
+        <div id="background">
+          <h2 class="title is-3">Background</h2>
+
+          <div class="content has-text-justified">
+            <h4 class="title is-4">What is Trade Dependency?</h4>
+            <p>
+              Trade dependence is the extent to which a country's economy relies on international trade for its growth and stability, often indicated by the share of trade in national income. There are several methods for determining the level of trade dependency. The most common method is the ratio (%) of trade to GDP.
+            </p>
+            <p>
+              To explain the method, there are several variables to know. There are GDP and trade volumes of goods and services. GDP (Gross Domestic Product) is the total monetary value of all goods and services produced within a country's borders during a specific period. Trade volume is the total value or quantity of a country's exports and imports over a specific period.
+            </p>
+            <p>
+              If trade as % of GDP is 100%, it means the trade volume equals GDP. If it is higher than 100%, it generally means it has high trade dependency.
+            </p>
+          </div>
+
+          <figure class="image has-text-centered content-block">
+            <img src="./static/images/trade_map.png" alt="Trade Dependency Map" class="clickable-image">
+            <figcaption>Figure 1. Global Map of Trade Dependency (Trade % of GDP).</figcaption>
+          </figure>
+          <div class="content has-text-justified content-block">
+            <p>
+              The World graph above shows the overall trade as % of GDP across the world. We can see that small countries in Europe and Asia have higher trade as % of GDP than other countries by focusing on darker countries on the map.
+            </p>
+          </div>
+
+          <figure class="image has-text-centered content-block">
+            <img src="./static/images/barplot.png" alt="Bar plot" class="clickable-image">
+            <figcaption>Figure 2. Top 5 and Bottom 5 countries by Trade as % of GDP.</figcaption>
+          </figure>
+          <div class="content has-text-justified content-block">
+            <p>
+              The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation formula by reading the calculation formula.
+            </p>
+            <h5 class="title is-5">Calculation Formula:</h5>
+            <ul>
+              <li>
+                <strong>Import as (%) of GDP:</strong><br>
+                $ \text{Import (\%)} = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $
+              </li>
+              <li>
+                <strong>Export as (%) of GDP:</strong><br>
+                $ \text{Export (\%)} = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $
+              </li>
+              <li>
+                <strong>Trade as (%) of GDP:</strong><br>
+                $ \text{Trade (\%)} = \text{Import (\%)} + \text{Export (\%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $
+              </li>
+            </ul>
+          </div>
+
+          <figure class="image has-text-centered content-block">
+            <img src="./static/images/population_map.png" alt="Global Population Map" class="clickable-image">
+            <figcaption>Figure 3. Global Map of Population Size.</figcaption>
+          </figure>
+          <div class="content has-text-justified content-block">
+            <h4 class="title is-4">Population and Trade</h4>
+            <p>
+              Population size is a critical determinant of how open an economy tends to be. The map indicates vast differences in population size across the world. It provides the structural foundation for understanding cross-country populations before comparing the trade dependency of small groups and large groups of countries. By comparing the two groups, it is easy to understand variations in trade dependency with population.
+            </p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div id="results">
+          <h2 class="title is-3">Results</h2>
+
+          <figure class="image has-text-centered content-block">
+            <img src="./static/images/boxplot.png" alt="Box plot" class="clickable-image">
+            <figcaption>Figure 4. Distribution of Trade to GDP ratio by population group.</figcaption>
+          </figure>
+          <div class="content has-text-justified content-block">
+            <p>
+              This box plot compares the distribution of the trade to GDP (trade dependency) in each group, based on 2023 data, by grouping countries by population size (small/medium/large). The representative countries of each group are Singapore and Luxembourg for the small group, Korea for the medium group, and the USA, China for the large group.
+            </p>
+            <p>
+              The median value of the small group is 106.22, the medium group is 65.64, and the large group is 40.83. As we can see in the box graph, the small group population size has a higher trade dependency than the other two groups.
+            </p>
+          </div>
+
+          <figure class="image has-text-centered content-block">
+            <img src="./static/images/scatter_plot.png" alt="Scatter plot" class="clickable-image">
+            <figcaption>Figure 5. Scatter plot showing the relationship between Population (log scale) and Trade (% of GDP).</figcaption>
+          </figure>
+          <div class="content has-text-justified content-block">
+            <p>
+              The second graph is a scatterplot showing the relationship between population and trade (% of GDP). The x-axis displays population size on a log scale ranging from 10K to 1B (two countries are over 1B, China and India), effectively visualizing a wide population distribution. The y-axis shows the trade ratio on a linear scale starting from 0%.
+            </p>
+            <p>
+              The red dotted regression line is:
+              $$ y = -26.79 \times \log_{10}(x) + 279.54 $$
+              This regression line shows a negative correlation trend, indicating that countries with larger populations tend to have a lower trade-to-GDP ratio. The $R^2$ (coefficient of determination) value is 0.167, meaning that population (log value) explains approximately 16.7% of the variation in a country's trade dependence.
+            </p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div id="discussions">
+          <h2 class="title is-3">Discussions</h2>
+          <div class="content has-text-justified">
+            <p>
+              As can be seen from the graph in the results, population and trade dependency have a negative relationship. This result is presumed because a larger population enables a country to sustain itself with less trade by using its large domestic market.
+            </p>
+            <p>
+              The R-squared value between the two factors is 0.167. Although this value may seem low, in social science research, this level of R-squared value can show a meaningful relationship. This study confirms the negative relationship between population size and trade dependency, which allows one to predict how much a country's economic performance is influenced by trade, by the size of its population.
+            </p>
+            <p>
+              Also, this implies that there is another factor involved in deciding the trade dependency. Future research could investigate what these other factors are and why population and trade dependency have a negative relationship.
+            </p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div id="references">
+          <h2 class="title is-3">References</h2>
+          <div class="content has-text-justified">
+            <p>
+              World Bank. (2023). <em>World Development Indicators: Exports of goods and services - Imports of goods and services - Population - Trade.</em>
+            </p>
+          </div>
+        </div>
+
+      </div> </div> </div>
+</section>
+
+<footer class='footer footer-compact'>
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+       This website was created as coursework for <strong>CDS 301 / 501: Scientific Information and Data Visualization (Fall 2025) at George Mason Korea</strong>.
+      </p>
+      <p>
+        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<div id="image-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image">
+      <img id="modal-img" src="" alt="">
+    </p>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Get all images with class 'clickable-image'
+    const images = document.querySelectorAll('.clickable-image');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalBg = document.querySelector('.modal-background');
+    const modalClose = document.querySelector('.modal-close');
+
+    // 2. Add click event to each image
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src; // Set modal image source to clicked image source
+        modal.classList.add('is-active'); // Open modal
+      });
+    });
+
+    // 3. Function to close modal
+    function closeModal() {
+      modal.classList.remove('is-active');
+    }
+
+    // 4. Close modal when background or close button is clicked
+    modalBg.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeModal);
+  });
+</script>
+
+</body>
+</html>
