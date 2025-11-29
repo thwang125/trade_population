@@ -35,28 +35,79 @@
       opacity: 0.9;
     }
     
-    /* Modal Image Styling for Zoom Functionality */
-    .modal-content img {
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-      max-height: 90vh; /* Fit within viewport initially */
+    /* Modal Content Styling for Better Zoom 
+      This ensures the modal can handle large images and scroll if necessary
+    */
+    .modal-content {
       width: auto;
-    }
-    
-    /* Class to apply when zoomed in */
-    .is-zoomed {
-      transform: scale(1.5); /* 1.5x zoom level */
-      cursor: zoom-out !important;
+      max-width: 95%; 
+      max-height: 95%;
+      overflow: hidden; /* Hidden initially, scroll when zoomed */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Linkedin Button Color */
-    .button.is-linkedin {
+    /* Initial state of the image in modal: Fit to screen */
+    #modal-img {
+      max-height: 90vh;
+      max-width: 90vw;
+      width: auto;
+      height: auto;
+      cursor: zoom-in;
+      transition: all 0.3s ease;
+    }
+    
+    /* Zoomed state: 
+      Removes max-width/height constraints to show actual size.
+      User can scroll the modal container if the image is huge.
+    */
+    #modal-img.is-zoomed {
+      max-height: none; 
+      max-width: none;
+      width: auto; /* or specific scale like 150% if preferred */
+      cursor: zoom-out;
+    }
+
+    /* Container allowing scroll when zoomed */
+    .modal-content.is-scrollable {
+      overflow: auto;
+      display: block; /* Changes flex to block to allow scrolling */
+    }
+
+    /* Linkedin Button Styling with Image */
+    .button.is-linkedin-img {
         background-color: #0077b5;
         border-color: transparent;
         color: #fff;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
     }
-    .button.is-linkedin:hover {
+    .button.is-linkedin-img:hover {
         background-color: #006097;
+        color: #fff;
+    }
+    .linkedin-logo {
+        height: 20px; /* Adjust height to match text */
+        width: auto;
+        margin-right: 8px;
+        background-color: white; /* Optional: adds contrast if logo is transparent */
+        border-radius: 2px;
+        padding: 2px;
+    }
+
+    /* Equal Height Box Styling */
+    .height-100 {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    /* Author content spacing */
+    .author-info p {
+        margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -123,7 +174,7 @@
     
     <figure class="image has-text-centered">
       <img src="./static/images/trade_map.png" alt="Trade Dependency Map" class="clickable-image" onclick="openModal(this)">
-      <figcaption>Figure 1. Global Map of Trade Dependency (Trade % of GDP). <br><em>(Click image to enlarge)</em></figcaption>
+      <figcaption>Figure 1. Global Map of Trade Dependency (Trade % of GDP).</figcaption>
     </figure>
 
     <br>
@@ -142,7 +193,7 @@
 
     <figure class="image has-text-centered">
       <img src="./static/images/barplot.png" alt="Bar plot of highest and lowest trade dependency countries" class="clickable-image" onclick="openModal(this)">
-      <figcaption>Figure 2. Top 5 and Bottom 5 countries by Trade as % of GDP. <br><em>(Click image to enlarge)</em></figcaption>
+      <figcaption>Figure 2. Top 5 and Bottom 5 countries by Trade as % of GDP.</figcaption>
     </figure>
     
     <br>
@@ -181,7 +232,7 @@
 
     <figure class="image has-text-centered">
       <img src="./static/images/population_map.png" alt="Global Population Map" class="clickable-image" onclick="openModal(this)">
-      <figcaption>Figure 3. Global Map of Population Size. <br><em>(Click image to enlarge)</em></figcaption>
+      <figcaption>Figure 3. Global Map of Population Size.</figcaption>
     </figure>
 
     <br>
@@ -200,7 +251,7 @@
 
     <figure class="image has-text-centered">
       <img src="./static/images/boxplot.png" alt="Box plot of trade dependency by population group" class="clickable-image" onclick="openModal(this)">
-      <figcaption>Figure 4. Distribution of Trade to GDP ratio by population group. <br><em>(Click image to enlarge)</em></figcaption>
+      <figcaption>Figure 4. Distribution of Trade to GDP ratio by population group.</figcaption>
     </figure>
 
     <br>
@@ -222,7 +273,7 @@
 
     <figure class="image has-text-centered">
       <img src="./static/images/scatter_plot.png" alt="Scatter plot of Population vs Trade Dependency" class="clickable-image" onclick="openModal(this)">
-      <figcaption>Figure 5. Scatter plot showing the relationship between Population (log scale) and Trade (% of GDP). <br><em>(Click image to enlarge)</em></figcaption>
+      <figcaption>Figure 5. Scatter plot showing the relationship between Population (log scale) and Trade (% of GDP).</figcaption>
     </figure>
 
     <br>
@@ -261,39 +312,50 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">About the Authors</h2>
       <br>
-      <div class="columns is-centered">
+      
+      <div class="columns is-centered is-multiline">
         
-        <div class="column is-5 has-text-centered box mr-4">
-            <h4 class="title is-4">Taegyu Hwang</h4>
-            <p class="subtitle is-6">George Mason University Korea</p>
-            <div class="content">
-                <p>
-                    <strong>Major:</strong> Economics (Placeholder)<br>
-                    <strong>Email:</strong> thwang@gmu.edu (Placeholder)
-                </p>
-                <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin">
-                    <span class="icon">
-                        <i class="fab fa-linkedin"></i>
-                    </span>
-                    <span>LinkedIn</span>
-                </a>
+        <div class="column is-6-tablet is-5-desktop">
+            <div class="box height-100 has-text-centered">
+                <div>
+                    <h4 class="title is-4">Taegyu Hwang</h4>
+                    <p class="subtitle is-6 has-text-weight-semibold">George Mason University</p>
+                    <div class="content author-info is-size-6">
+                        <p>College of Humanities and Social Sciences</p>
+                        <p>Department of Economics</p>
+                        <p>
+                            <strong>Email:</strong> <a href="mailto:thwang3@gmu.edu">thwang3@gmu.edu</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="button is-linkedin-img">
+                        <img src="./static/images/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </div>
   
-        <div class="column is-5 has-text-centered box ml-4">
-            <h4 class="title is-4">Jaemin Kim</h4>
-            <p class="subtitle is-6">George Mason University Korea</p>
-            <div class="content">
-                <p>
-                    <strong>Major:</strong> Economics (Placeholder)<br>
-                    <strong>Email:</strong> jkim@gmu.edu (Placeholder)
-                </p>
-                <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin">
-                    <span class="icon">
-                        <i class="fab fa-linkedin"></i>
-                    </span>
-                    <span>LinkedIn</span>
-                </a>
+        <div class="column is-6-tablet is-5-desktop">
+            <div class="box height-100 has-text-centered">
+                <div>
+                    <h4 class="title is-4">Jaemin Kim</h4>
+                    <p class="subtitle is-6 has-text-weight-semibold">George Mason University</p>
+                    <div class="content author-info is-size-6">
+                        <p>Costello College of Business</p>
+                        <p>&nbsp;</p> 
+                        <p>
+                            <strong>Email:</strong> <a href="mailto:jkim382@gmu.edu">jkim382@gmu.edu</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin-img">
+                        <img src="./static/images/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -327,11 +389,11 @@
 
 <div id="image-modal" class="modal">
   <div class="modal-background" onclick="closeModal()"></div>
-  <div class="modal-content">
-    <p class="image">
-      <img id="modal-img" src="" alt="Enlarged Image" onclick="toggleZoom(this)">
-    </p>
+  
+  <div class="modal-content" id="modal-content-container">
+    <img id="modal-img" src="" alt="Enlarged Image" onclick="toggleZoom(this)">
   </div>
+  
   <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
 </div>
 
@@ -340,12 +402,14 @@
   function openModal(element) {
     var modal = document.getElementById("image-modal");
     var modalImg = document.getElementById("modal-img");
+    var modalContainer = document.getElementById("modal-content-container");
     
     // Set the source of the modal image to the source of the clicked image
     modalImg.src = element.src;
     
-    // Reset zoom state when opening a new image
+    // Reset zoom state and scroll state when opening a new image
     modalImg.classList.remove("is-zoomed");
+    modalContainer.classList.remove("is-scrollable");
     
     // Show the modal
     modal.classList.add("is-active");
@@ -359,7 +423,16 @@
 
   // Function to toggle zoom on the modal image
   function toggleZoom(element) {
+    var modalContainer = document.getElementById("modal-content-container");
+    
     element.classList.toggle("is-zoomed");
+    
+    // If zoomed, allow scrolling on the container
+    if (element.classList.contains("is-zoomed")) {
+        modalContainer.classList.add("is-scrollable");
+    } else {
+        modalContainer.classList.remove("is-scrollable");
+    }
   }
 
   // Close modal when pressing ESC key
