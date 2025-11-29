@@ -24,6 +24,41 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* Cursor indicates the image is clickable */
+    .clickable-image {
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .clickable-image:hover {
+      opacity: 0.9;
+    }
+    
+    /* Modal Image Styling for Zoom Functionality */
+    .modal-content img {
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+      max-height: 90vh; /* Fit within viewport initially */
+      width: auto;
+    }
+    
+    /* Class to apply when zoomed in */
+    .is-zoomed {
+      transform: scale(1.5); /* 1.5x zoom level */
+      cursor: zoom-out !important;
+    }
+
+    /* Linkedin Button Color */
+    .button.is-linkedin {
+        background-color: #0077b5;
+        border-color: transparent;
+        color: #fff;
+    }
+    .button.is-linkedin:hover {
+        background-color: #006097;
+    }
+  </style>
 </head>
 <body>
 
@@ -35,10 +70,10 @@
           <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse Relationship</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Jaemin Kim and
+              Taegyu Hwang and
             </span>
             <span class="author-block">
-              Taegyu Hwang
+              Jaemin Kim
             </span>
           </div>
           <div class="is-size-5 publication-authors">
@@ -50,7 +85,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section has-background-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -67,10 +102,8 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Background</h2>
-
+    <h2 class="title is-3 has-text-centered">Background: What is Trade Dependency?</h2>
     <div class="content has-text-justified">
-      <h4 class="title is-4">What is Trade Dependency?</h4>
       <p>
         Trade dependence is the extent to which a country's economy relies on international trade for its growth and stability, often indicated by the share of trade in national income. There are several methods for determining the level of trade dependency. The most common method is the ratio (%) of trade to GDP.
       </p>
@@ -81,31 +114,49 @@
         If trade as % of GDP is 100%, it means the trade volume equals GDP. If it is higher than 100%, it generally means it has high trade dependency.
       </p>
     </div>
+  </div>
+</section>
 
-    <div class="content has-text-justified">
-      <p>
-        The World graph below shows the overall trade as % of GDP across the world. We can see that small countries in Europe and Asia have higher trade as % of GDP than other countries by focusing on darker countries on the map.
-      </p>
-    </div>
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Global Trade Dependency Map</h2>
+    
     <figure class="image has-text-centered">
-      <img src="./static/images/trade_map.png" alt="Trade Dependency Map">
-      <figcaption>Figure 1. Global Map of Trade Dependency (Trade % of GDP).</figcaption>
+      <img src="./static/images/trade_map.png" alt="Trade Dependency Map" class="clickable-image" onclick="openModal(this)">
+      <figcaption>Figure 1. Global Map of Trade Dependency (Trade % of GDP). <br><em>(Click image to enlarge)</em></figcaption>
     </figure>
 
     <br>
 
     <div class="content has-text-justified">
       <p>
-        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation formula by reading the calculation formula.
+        The World graph above shows the overall trade as % of GDP across the world. We can see that small countries in Europe and Asia have higher trade as % of GDP than other countries by focusing on darker countries on the map.
       </p>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Highest and Lowest Trade Dependency</h2>
+
     <figure class="image has-text-centered">
-      <img src="./static/images/barplot.png" alt="Bar plot of highest and lowest trade dependency countries">
-      <figcaption>Figure 2. Top 5 and Bottom 5 countries by Trade as % of GDP.</figcaption>
+      <img src="./static/images/barplot.png" alt="Bar plot of highest and lowest trade dependency countries" class="clickable-image" onclick="openModal(this)">
+      <figcaption>Figure 2. Top 5 and Bottom 5 countries by Trade as % of GDP. <br><em>(Click image to enlarge)</em></figcaption>
     </figure>
+    
+    <br>
 
     <div class="content has-text-justified">
-      <h5 class="title is-5">Calculation Formula:</h5>
+      <p>
+        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation formula by reading the calculation formula below.
+      </p>
+    </div>
+
+    <br>
+
+    <div class="content has-text-justified box">
+      <h4 class="title is-5">Calculation Formula</h4>
       <ul>
         <li>
           <strong>Import as (%) of GDP:</strong><br>
@@ -121,26 +172,38 @@
         </li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Global Population Overview</h2>
+
+    <figure class="image has-text-centered">
+      <img src="./static/images/population_map.png" alt="Global Population Map" class="clickable-image" onclick="openModal(this)">
+      <figcaption>Figure 3. Global Map of Population Size. <br><em>(Click image to enlarge)</em></figcaption>
+    </figure>
 
     <br>
 
     <div class="content has-text-justified">
-      <h4 class="title is-4">Population and Trade</h4>
       <p>
         Population size is a critical determinant of how open an economy tends to be. The map indicates vast differences in population size across the world. It provides the structural foundation for understanding cross-country populations before comparing the trade dependency of small groups and large groups of countries. By comparing the two groups, it is easy to understand variations in trade dependency with population.
       </p>
     </div>
-    <figure class="image has-text-centered">
-      <img src="./static/images/population_map.png" alt="Global Population Map">
-      <figcaption>Figure 3. Global Map of Population Size.</figcaption>
-    </figure>
-
   </div>
 </section>
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results</h2>
+    <h2 class="title is-3 has-text-centered">Results: Group Comparison</h2>
+
+    <figure class="image has-text-centered">
+      <img src="./static/images/boxplot.png" alt="Box plot of trade dependency by population group" class="clickable-image" onclick="openModal(this)">
+      <figcaption>Figure 4. Distribution of Trade to GDP ratio by population group. <br><em>(Click image to enlarge)</em></figcaption>
+    </figure>
+
+    <br>
 
     <div class="content has-text-justified">
       <p>
@@ -150,16 +213,23 @@
         The median value of the small group is 106.22, the medium group is 65.64, and the large group is 40.83. As we can see in the box graph, the small group population size has a higher trade dependency than the other two groups.
       </p>
     </div>
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results: Regression Analysis</h2>
+
     <figure class="image has-text-centered">
-      <img src="./static/images/boxplot.png" alt="Box plot of trade dependency by population group">
-      <figcaption>Figure 4. Distribution of Trade to GDP ratio by population group.</figcaption>
+      <img src="./static/images/scatter_plot.png" alt="Scatter plot of Population vs Trade Dependency" class="clickable-image" onclick="openModal(this)">
+      <figcaption>Figure 5. Scatter plot showing the relationship between Population (log scale) and Trade (% of GDP). <br><em>(Click image to enlarge)</em></figcaption>
     </figure>
 
     <br>
 
     <div class="content has-text-justified">
       <p>
-        The second graph is a scatterplot showing the relationship between population and trade (% of GDP). The x-axis displays population size on a log scale ranging from 10K to 1B (two countries are over 1B, China and India), effectively visualizing a wide population distribution. The y-axis shows the trade ratio on a linear scale starting from 0%.
+        The scatterplot above shows the relationship between population and trade (% of GDP). The x-axis displays population size on a log scale ranging from 10K to 1B (two countries are over 1B, China and India), effectively visualizing a wide population distribution. The y-axis shows the trade ratio on a linear scale starting from 0%.
       </p>
       <p>
         The red dotted regression line is:
@@ -167,11 +237,6 @@
         This regression line shows a negative correlation trend, indicating that countries with larger populations tend to have a lower trade-to-GDP ratio. The $R^2$ (coefficient of determination) value is 0.167, meaning that population (log value) explains approximately 16.7% of the variation in a country's trade dependence.
       </p>
     </div>
-    <figure class="image has-text-centered">
-      <img src="./static/images/scatter_plot.png" alt="Scatter plot of Population vs Trade Dependency">
-      <figcaption>Figure 5. Scatter plot showing the relationship between Population (log scale) and Trade (% of GDP).</figcaption>
-    </figure>
-
   </div>
 </section>
 
@@ -191,6 +256,50 @@
     </div>
   </div>
 </section>
+
+<section class="section has-background-light" id="authors">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">About the Authors</h2>
+      <br>
+      <div class="columns is-centered">
+        
+        <div class="column is-5 has-text-centered box mr-4">
+            <h4 class="title is-4">Taegyu Hwang</h4>
+            <p class="subtitle is-6">George Mason University Korea</p>
+            <div class="content">
+                <p>
+                    <strong>Major:</strong> Economics (Placeholder)<br>
+                    <strong>Email:</strong> thwang@gmu.edu (Placeholder)
+                </p>
+                <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin">
+                    <span class="icon">
+                        <i class="fab fa-linkedin"></i>
+                    </span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+  
+        <div class="column is-5 has-text-centered box ml-4">
+            <h4 class="title is-4">Jaemin Kim</h4>
+            <p class="subtitle is-6">George Mason University Korea</p>
+            <div class="content">
+                <p>
+                    <strong>Major:</strong> Economics (Placeholder)<br>
+                    <strong>Email:</strong> jkim@gmu.edu (Placeholder)
+                </p>
+                <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin">
+                    <span class="icon">
+                        <i class="fab fa-linkedin"></i>
+                    </span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -215,6 +324,51 @@
     </div>
   </div>
 </footer>
+
+<div id="image-modal" class="modal">
+  <div class="modal-background" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <p class="image">
+      <img id="modal-img" src="" alt="Enlarged Image" onclick="toggleZoom(this)">
+    </p>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+</div>
+
+<script>
+  // Function to open the modal
+  function openModal(element) {
+    var modal = document.getElementById("image-modal");
+    var modalImg = document.getElementById("modal-img");
+    
+    // Set the source of the modal image to the source of the clicked image
+    modalImg.src = element.src;
+    
+    // Reset zoom state when opening a new image
+    modalImg.classList.remove("is-zoomed");
+    
+    // Show the modal
+    modal.classList.add("is-active");
+  }
+
+  // Function to close the modal
+  function closeModal() {
+    var modal = document.getElementById("image-modal");
+    modal.classList.remove("is-active");
+  }
+
+  // Function to toggle zoom on the modal image
+  function toggleZoom(element) {
+    element.classList.toggle("is-zoomed");
+  }
+
+  // Close modal when pressing ESC key
+  document.addEventListener('keydown', function (event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+</script>
 
 </body>
 </html>
