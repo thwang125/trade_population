@@ -19,7 +19,13 @@
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
       }
     };
   </script>
@@ -28,8 +34,8 @@
   <style>
     /* === Typography & Responsive Fonts === */
     html {
-        font-size: 18px; /* Default for Desktop */
-        scroll-behavior: smooth; /* Smooth scrolling for internal links */
+        font-size: 18px; 
+        scroll-behavior: smooth; 
     }
     
     /* Mobile Optimization */
@@ -76,7 +82,7 @@
       width: auto;
       height: auto;
       cursor: zoom-in;
-      transition: all 0.3s ease;
+      /* Removed transition for accurate zoom-to-click calculation */
     }
     
     #modal-img.is-zoomed {
@@ -120,13 +126,13 @@
         background-color: #006097;
         color: #fff;
     }
-    /* UPDATED: Added white border to the logo image */
+    
     .linkedin-logo-btn {
         height: 20px;
         width: auto;
         margin-right: 8px;
         background-color: white; 
-        border: 1px solid white; /* Adds white border */
+        border: 1px solid white; 
         border-radius: 2px;
         padding: 0px; 
     }
@@ -143,28 +149,27 @@
         margin-bottom: 0.5rem;
     }
     
-    /* === Calculation Box & Formula Styling (UPDATED) === */
+    /* === Calculation Box & Formula Styling === */
     .formula-list {
-        padding-left: 0; /* Remove default padding for cleaner look */
-        list-style: none; /* Remove bullets */
+        padding-left: 0;
+        list-style: none;
     }
     
     .formula-list li {
         margin-bottom: 2rem;
-        text-align: left; /* Text remains left aligned */
+        text-align: left;
     }
 
-    /* Wrapper for the equation to handle centering and mobile breaking */
+    /* Wrapper for the equation */
     .equation-wrapper {
         display: flex;
-        justify-content: center; /* Center horizontally on desktop */
+        justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         margin-top: 10px;
         font-size: 1.1em;
     }
 
-    /* Ensure math parts have some spacing */
     .math-part {
         padding: 0 5px;
     }
@@ -172,20 +177,24 @@
     /* Mobile Specific Formula Styles */
     @media screen and (max-width: 768px) {
         .equation-wrapper {
-            flex-direction: column; /* Stack vertically */
-            align-items: center;    /* Center align the stack */
+            flex-direction: column; /* Stack vertically on mobile */
+            align-items: center;
         }
         
-        /* Ensure the second part (starting with =) starts on a new line */
         .math-rhs {
-            margin-top: 5px; 
+            margin-top: 8px; /* Add spacing between lines on mobile */
         }
     }
 
     /* === Utility Class for text breaking === */
-    /* Keeps text together to prevent awkward mid-phrase breaks */
     .keep-together {
         display: inline-block;
+        white-space: nowrap; 
+    }
+
+    /* === Regression Line Formula Styling === */
+    .mjx-chtml.MJXc-display {
+        font-size: 1.5em !important; 
     }
   </style>
 </head>
@@ -198,15 +207,14 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse Relationship</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
+            <span class="author-block keep-together">
               Taegyu Hwang
               <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="header-linkedin-icon" aria-label="LinkedIn Profile">
                 <img src="./static/images/linkedin.png" alt="LinkedIn">
               </a>
-              and
             </span>
-            <span class="author-block">
-              Jaemin Kim
+            <span class="author-block keep-together">
+               and Jaemin Kim
             </span>
           </div>
           <div class="is-size-5 publication-authors">
@@ -270,10 +278,11 @@
               </div>
             </li>
             <li>
-              <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic openness.<br>
+              <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic <strong>dependency</strong>.<br>
               <div class="equation-wrapper">
                 <span class="math-part">$ \text{Trade (%)} $</span>
-                <span class="math-part math-rhs">$ = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $</span>
+                <span class="math-part math-rhs">$ = \text{Import (%)} + \text{Export (%)} $</span>
+                <span class="math-part math-rhs">$ = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $</span>
               </div>
             </li>
           </ul>
@@ -315,7 +324,7 @@
 
     <div class="content has-text-justified">
       <p>
-        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation method by referring to the formula provided in the <strong><a href="#calculation-formula" style="color: #3273dc;">Background</a></strong> section above.
+        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation method by referring to the <strong><a href="#calculation-formula" style="color: #3273dc;">formula</a></strong> provided in the Background section above.
       </p>
     </div>
   </div>
@@ -488,7 +497,7 @@
   <div class="modal-background" onclick="closeModal()"></div>
   
   <div class="modal-content" id="modal-content-container">
-    <img id="modal-img" src="" alt="Enlarged Image" onclick="toggleZoom(this)">
+    <img id="modal-img" src="" alt="Enlarged Image" onclick="toggleZoom(event, this)">
   </div>
   
   <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
@@ -511,13 +520,43 @@
     modal.classList.remove("is-active");
   }
 
-  function toggleZoom(element) {
+  function toggleZoom(event, element) {
     var modalContainer = document.getElementById("modal-content-container");
-    element.classList.toggle("is-zoomed");
     
-    if (element.classList.contains("is-zoomed")) {
+    // Check if we are zooming IN or OUT
+    var isZoomingIn = !element.classList.contains("is-zoomed");
+
+    if (isZoomingIn) {
+        // 1. Get click coordinates relative to the IMAGE
+        var rect = element.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+
+        // 2. Calculate percentages (where did we click in terms of 0-1?)
+        var xPercent = x / element.offsetWidth;
+        var yPercent = y / element.offsetHeight;
+
+        // 3. Apply Zoom Class (Width expands to native size)
+        element.classList.add("is-zoomed");
         modalContainer.classList.add("is-scrollable");
+
+        // 4. Force browser layout update so we have new dimensions
+        // (Accessing offsetWidth forces a reflow)
+        var newWidth = element.offsetWidth;
+        var newHeight = element.offsetHeight;
+
+        // 5. Calculate Center Position
+        // We want the clicked point (percent) to be in the center of the viewport
+        // Scroll Left = (Percentage * New Width) - (Viewport Width / 2)
+        var viewportWidth = modalContainer.clientWidth;
+        var viewportHeight = modalContainer.clientHeight;
+
+        modalContainer.scrollLeft = (xPercent * newWidth) - (viewportWidth / 2);
+        modalContainer.scrollTop = (yPercent * newHeight) - (viewportHeight / 2);
+
     } else {
+        // Zooming Out
+        element.classList.remove("is-zoomed");
         modalContainer.classList.remove("is-scrollable");
     }
   }
