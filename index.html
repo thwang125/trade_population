@@ -26,20 +26,31 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
-    /* === Overall Typography Adjustment === */
+    /* === Typography & Responsive Fonts === */
     html {
-        /* Increase base font size for the entire document */
-        font-size: 18px; 
+        font-size: 18px; /* Default for Desktop */
     }
     
+    /* Mobile Optimization: Adjust font sizes for smaller screens */
+    @media screen and (max-width: 768px) {
+        html {
+            font-size: 16px; /* Slightly smaller base font for mobile */
+        }
+        .publication-title {
+            font-size: 1.8rem !important; /* Prevent title from being too huge */
+        }
+        .section {
+            padding: 2rem 1rem; /* Reduce padding on mobile */
+        }
+    }
+
     /* Make figure captions smaller than the main body text */
     figcaption {
         font-size: 0.85em;
-        color: #555; /* Optional: slightly lighter color for captions */
+        color: #555;
     }
 
     /* === Image Interaction Styling === */
-    /* Cursor indicates the image is clickable */
     .clickable-image {
       cursor: zoom-in;
       transition: transform 0.2s;
@@ -48,18 +59,17 @@
       opacity: 0.9;
     }
     
-    /* Modal Content Styling for Better Zoom */
+    /* Modal Content Styling */
     .modal-content {
       width: auto;
       max-width: 95%; 
       max-height: 95%;
-      overflow: hidden; /* Hidden initially, scroll when zoomed */
+      overflow: hidden; 
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Initial state of the image in modal: Fit to screen */
     #modal-img {
       max-height: 90vh;
       max-width: 90vw;
@@ -69,7 +79,6 @@
       transition: all 0.3s ease;
     }
     
-    /* Zoomed state: Shows actual size, allows scrolling */
     #modal-img.is-zoomed {
       max-height: none; 
       max-width: none;
@@ -77,38 +86,52 @@
       cursor: zoom-out;
     }
 
-    /* Container allowing scroll when zoomed */
     .modal-content.is-scrollable {
       overflow: auto;
       display: block;
     }
 
-    /* === Author Section Styling === */
-    /* Linkedin Button Styling with just Image */
-    .button.is-linkedin-img {
-        background-color: #0077b5;
-        border-color: transparent;
-        padding: 4px 12px; /* Adjust padding for image-only button */
-        height: auto;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+    /* === LinkedIn Button Styling === */
+    /* 1. Header Small Icon */
+    .header-linkedin-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+        transition: opacity 0.2s;
     }
-    .button.is-linkedin-img:hover {
-        background-color: #006097;
-        opacity: 0.9;
+    .header-linkedin-icon img {
+        height: 20px;
+        width: 20px;
+        border-radius: 4px; /* Optional: Rounded corners */
     }
-    .linkedin-logo {
-        height: 26px; /* Slightly larger since text is removed */
-        width: auto;
-        margin-right: 0; /* No text follows */
-        background-color: white;
-        border-radius: 2px;
-        padding: 2px;
-        display: block;
+    .header-linkedin-icon:hover {
+        opacity: 0.7;
     }
 
-    /* Equal Height Box Styling */
+    /* 2. Author Section Button (Blue Box with Text) */
+    .button.is-linkedin-full {
+        background-color: #0077b5;
+        border-color: transparent;
+        color: #fff;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5em 1em;
+    }
+    .button.is-linkedin-full:hover {
+        background-color: #006097;
+        color: #fff;
+    }
+    .linkedin-logo-btn {
+        height: 20px;
+        width: auto;
+        margin-right: 8px;
+        background-color: white; 
+        border-radius: 2px;
+        padding: 0px; 
+    }
+
+    /* === Equal Height Box Styling === */
     .height-100 {
         height: 100%;
         display: flex;
@@ -116,19 +139,31 @@
         justify-content: space-between;
     }
     
-    /* Author content spacing */
     .author-info p {
         margin-bottom: 0.5rem;
     }
     
     /* === Calculation Box Styling === */
-    /* Remove list bullets for centered list */
-    .centered-list {
-        list-style: none;
-        padding-left: 0;
+    /* Container for the formula list to handle overflow */
+    .formula-container {
+        text-align: left; /* Left align text as requested */
+        width: 100%;
+        overflow-x: auto; /* CRITICAL: Enables horizontal scroll on mobile */
     }
-    .centered-list li {
-        margin-bottom: 1.5rem; /* Add space between formula blocks */
+    
+    .formula-list {
+        padding-left: 1.5em; /* Standard list indentation */
+    }
+    
+    .formula-list li {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Ensure MathJax scales or scrolls */
+    mjx-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
     }
   </style>
 </head>
@@ -142,7 +177,11 @@
           <h1 class="title is-1 publication-title">Population Size vs. Trade Dependency:<br>An Inverse Relationship</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Taegyu Hwang and
+              Taegyu Hwang
+              <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="header-linkedin-icon" aria-label="LinkedIn Profile">
+                <img src="./static/images/linkedin.png" alt="LinkedIn">
+              </a>
+              and
             </span>
             <span class="author-block">
               Jaemin Kim
@@ -186,6 +225,36 @@
         If trade as % of GDP is 100%, it means the trade volume equals GDP. If it is higher than 100%, it generally means it has high trade dependency.
       </p>
     </div>
+
+    <br>
+
+    <div class="box">
+        <h4 class="title is-5 has-text-centered">Calculation Formula</h4>
+        
+        <div class="formula-container">
+          <ul class="formula-list">
+            <li>
+              <strong>Import as (%) of GDP:</strong> Measures the monetary value of imports relative to the size of the domestic economy.<br>
+              <div style="margin-top: 5px;">
+                 $ \text{Import (%)} = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $
+              </div>
+            </li>
+            <li>
+              <strong>Export as (%) of GDP:</strong> Measures the monetary value of exports relative to the size of the domestic economy.<br>
+              <div style="margin-top: 5px;">
+                $ \text{Export (%)} = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $
+              </div>
+            </li>
+            <li>
+              <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic openness.<br>
+              <div style="margin-top: 5px;">
+                $ \text{Trade (%)} = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
   </div>
 </section>
 
@@ -221,28 +290,8 @@
 
     <div class="content has-text-justified">
       <p>
-        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation formula by reading the calculation formula below.
+        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation method by referring to the formula provided in the <strong>Background</strong> section above.
       </p>
-    </div>
-
-    <br>
-
-    <div class="content has-text-centered box">
-      <h4 class="title is-5">Calculation Formula</h4>
-      <ul class="centered-list">
-        <li>
-          <strong>Import as (%) of GDP:</strong> Measures the monetary value of imports relative to the size of the domestic economy.<br>
-          $ \text{Import (%)} = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $
-        </li>
-        <li>
-          <strong>Export as (%) of GDP:</strong> Measures the monetary value of exports relative to the size of the domestic economy.<br>
-          $ \text{Export (%)} = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $
-        </li>
-        <li>
-          <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic openness.<br>
-          $ \text{Trade (%)} = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $
-        </li>
-      </ul>
     </div>
   </div>
 </section>
@@ -350,8 +399,9 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="button is-linkedin-img" aria-label="LinkedIn Profile">
-                        <img src="./static/images/linkedin.png" alt="LinkedIn" class="linkedin-logo">
+                    <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="button is-linkedin-full" aria-label="LinkedIn Profile">
+                        <img src="./static/images/linkedin.png" alt="in" class="linkedin-logo-btn">
+                        <span>LinkedIn</span>
                     </a>
                 </div>
             </div>
@@ -371,8 +421,9 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin-img" aria-label="LinkedIn Profile">
-                        <img src="./static/images/linkedin.png" alt="LinkedIn" class="linkedin-logo">
+                    <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin-full" aria-label="LinkedIn Profile">
+                        <img src="./static/images/linkedin.png" alt="in" class="linkedin-logo-btn">
+                        <span>LinkedIn</span>
                     </a>
                 </div>
             </div>
@@ -417,36 +468,26 @@
 </div>
 
 <script>
-  // Function to open the modal
   function openModal(element) {
     var modal = document.getElementById("image-modal");
     var modalImg = document.getElementById("modal-img");
     var modalContainer = document.getElementById("modal-content-container");
     
-    // Set the source of the modal image to the source of the clicked image
     modalImg.src = element.src;
-    
-    // Reset zoom state and scroll state when opening a new image
     modalImg.classList.remove("is-zoomed");
     modalContainer.classList.remove("is-scrollable");
-    
-    // Show the modal
     modal.classList.add("is-active");
   }
 
-  // Function to close the modal
   function closeModal() {
     var modal = document.getElementById("image-modal");
     modal.classList.remove("is-active");
   }
 
-  // Function to toggle zoom on the modal image
   function toggleZoom(element) {
     var modalContainer = document.getElementById("modal-content-container");
-    
     element.classList.toggle("is-zoomed");
     
-    // If zoomed, allow scrolling on the container
     if (element.classList.contains("is-zoomed")) {
         modalContainer.classList.add("is-scrollable");
     } else {
@@ -454,7 +495,6 @@
     }
   }
 
-  // Close modal when pressing ESC key
   document.addEventListener('keydown', function (event) {
     if (event.key === "Escape") {
       closeModal();
