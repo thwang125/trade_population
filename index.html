@@ -29,22 +29,22 @@
     /* === Typography & Responsive Fonts === */
     html {
         font-size: 18px; /* Default for Desktop */
+        scroll-behavior: smooth; /* Smooth scrolling for internal links */
     }
     
-    /* Mobile Optimization: Adjust font sizes for smaller screens */
+    /* Mobile Optimization */
     @media screen and (max-width: 768px) {
         html {
-            font-size: 16px; /* Slightly smaller base font for mobile */
+            font-size: 16px; 
         }
         .publication-title {
-            font-size: 1.8rem !important; /* Prevent title from being too huge */
+            font-size: 1.8rem !important; 
         }
         .section {
-            padding: 2rem 1rem; /* Reduce padding on mobile */
+            padding: 2rem 1rem; 
         }
     }
 
-    /* Make figure captions smaller than the main body text */
     figcaption {
         font-size: 0.85em;
         color: #555;
@@ -92,7 +92,6 @@
     }
 
     /* === LinkedIn Button Styling === */
-    /* 1. Header Small Icon */
     .header-linkedin-icon {
         display: inline-block;
         vertical-align: middle;
@@ -102,13 +101,12 @@
     .header-linkedin-icon img {
         height: 20px;
         width: 20px;
-        border-radius: 4px; /* Optional: Rounded corners */
+        border-radius: 4px; 
     }
     .header-linkedin-icon:hover {
         opacity: 0.7;
     }
 
-    /* 2. Author Section Button (Blue Box with Text) */
     .button.is-linkedin-full {
         background-color: #0077b5;
         border-color: transparent;
@@ -122,11 +120,13 @@
         background-color: #006097;
         color: #fff;
     }
+    /* UPDATED: Added white border to the logo image */
     .linkedin-logo-btn {
         height: 20px;
         width: auto;
         margin-right: 8px;
         background-color: white; 
+        border: 1px solid white; /* Adds white border */
         border-radius: 2px;
         padding: 0px; 
     }
@@ -143,27 +143,49 @@
         margin-bottom: 0.5rem;
     }
     
-    /* === Calculation Box Styling === */
-    /* Container for the formula list to handle overflow */
-    .formula-container {
-        text-align: left; /* Left align text as requested */
-        width: 100%;
-        overflow-x: auto; /* CRITICAL: Enables horizontal scroll on mobile */
-    }
-    
+    /* === Calculation Box & Formula Styling (UPDATED) === */
     .formula-list {
-        padding-left: 1.5em; /* Standard list indentation */
+        padding-left: 0; /* Remove default padding for cleaner look */
+        list-style: none; /* Remove bullets */
     }
     
     .formula-list li {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: left; /* Text remains left aligned */
     }
 
-    /* Ensure MathJax scales or scrolls */
-    mjx-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        max-width: 100%;
+    /* Wrapper for the equation to handle centering and mobile breaking */
+    .equation-wrapper {
+        display: flex;
+        justify-content: center; /* Center horizontally on desktop */
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        font-size: 1.1em;
+    }
+
+    /* Ensure math parts have some spacing */
+    .math-part {
+        padding: 0 5px;
+    }
+
+    /* Mobile Specific Formula Styles */
+    @media screen and (max-width: 768px) {
+        .equation-wrapper {
+            flex-direction: column; /* Stack vertically */
+            align-items: center;    /* Center align the stack */
+        }
+        
+        /* Ensure the second part (starting with =) starts on a new line */
+        .math-rhs {
+            margin-top: 5px; 
+        }
+    }
+
+    /* === Utility Class for text breaking === */
+    /* Keeps text together to prevent awkward mid-phrase breaks */
+    .keep-together {
+        display: inline-block;
     }
   </style>
 </head>
@@ -228,27 +250,30 @@
 
     <br>
 
-    <div class="box">
+    <div class="box" id="calculation-formula">
         <h4 class="title is-5 has-text-centered">Calculation Formula</h4>
         
         <div class="formula-container">
           <ul class="formula-list">
             <li>
               <strong>Import as (%) of GDP:</strong> Measures the monetary value of imports relative to the size of the domestic economy.<br>
-              <div style="margin-top: 5px;">
-                 $ \text{Import (%)} = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $
+              <div class="equation-wrapper">
+                 <span class="math-part">$ \text{Import (%)} $</span>
+                 <span class="math-part math-rhs">$ = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $</span>
               </div>
             </li>
             <li>
               <strong>Export as (%) of GDP:</strong> Measures the monetary value of exports relative to the size of the domestic economy.<br>
-              <div style="margin-top: 5px;">
-                $ \text{Export (%)} = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $
+              <div class="equation-wrapper">
+                <span class="math-part">$ \text{Export (%)} $</span>
+                <span class="math-part math-rhs">$ = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $</span>
               </div>
             </li>
             <li>
               <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic openness.<br>
-              <div style="margin-top: 5px;">
-                $ \text{Trade (%)} = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $
+              <div class="equation-wrapper">
+                <span class="math-part">$ \text{Trade (%)} $</span>
+                <span class="math-part math-rhs">$ = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $</span>
               </div>
             </li>
           </ul>
@@ -290,7 +315,7 @@
 
     <div class="content has-text-justified">
       <p>
-        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation method by referring to the formula provided in the <strong>Background</strong> section above.
+        The Bar graph indicates the bottom 5 and top 5 countries that have the lowest and the highest trade as % of GDP across the world. It shows how trade as % of GDP is combined with Import as % of GDP and export as % of GDP. It is easy to understand the calculation method by referring to the formula provided in the <strong><a href="#calculation-formula" style="color: #3273dc;">Background</a></strong> section above.
       </p>
     </div>
   </div>
@@ -391,7 +416,9 @@
                     <h4 class="title is-4">Taegyu Hwang</h4>
                     <p class="subtitle is-6 has-text-weight-semibold">George Mason University</p>
                     <div class="content author-info is-size-6">
-                        <p>College of Humanities and Social Sciences</p>
+                        <p>
+                            College of Humanities <span class="keep-together">and Social Sciences</span>
+                        </p>
                         <p>Department of Economics</p>
                         <p>
                             <strong>Email:</strong> <a href="mailto:thwang3@gmu.edu">thwang3@gmu.edu</a>
