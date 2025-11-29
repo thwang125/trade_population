@@ -26,6 +26,19 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
+    /* === Overall Typography Adjustment === */
+    html {
+        /* Increase base font size for the entire document */
+        font-size: 18px; 
+    }
+    
+    /* Make figure captions smaller than the main body text */
+    figcaption {
+        font-size: 0.85em;
+        color: #555; /* Optional: slightly lighter color for captions */
+    }
+
+    /* === Image Interaction Styling === */
     /* Cursor indicates the image is clickable */
     .clickable-image {
       cursor: zoom-in;
@@ -35,9 +48,7 @@
       opacity: 0.9;
     }
     
-    /* Modal Content Styling for Better Zoom 
-      This ensures the modal can handle large images and scroll if necessary
-    */
+    /* Modal Content Styling for Better Zoom */
     .modal-content {
       width: auto;
       max-width: 95%; 
@@ -58,43 +69,43 @@
       transition: all 0.3s ease;
     }
     
-    /* Zoomed state: 
-      Removes max-width/height constraints to show actual size.
-      User can scroll the modal container if the image is huge.
-    */
+    /* Zoomed state: Shows actual size, allows scrolling */
     #modal-img.is-zoomed {
       max-height: none; 
       max-width: none;
-      width: auto; /* or specific scale like 150% if preferred */
+      width: auto;
       cursor: zoom-out;
     }
 
     /* Container allowing scroll when zoomed */
     .modal-content.is-scrollable {
       overflow: auto;
-      display: block; /* Changes flex to block to allow scrolling */
+      display: block;
     }
 
-    /* Linkedin Button Styling with Image */
+    /* === Author Section Styling === */
+    /* Linkedin Button Styling with just Image */
     .button.is-linkedin-img {
         background-color: #0077b5;
         border-color: transparent;
-        color: #fff;
-        font-weight: 600;
+        padding: 4px 12px; /* Adjust padding for image-only button */
+        height: auto;
         display: inline-flex;
+        justify-content: center;
         align-items: center;
     }
     .button.is-linkedin-img:hover {
         background-color: #006097;
-        color: #fff;
+        opacity: 0.9;
     }
     .linkedin-logo {
-        height: 20px; /* Adjust height to match text */
+        height: 26px; /* Slightly larger since text is removed */
         width: auto;
-        margin-right: 8px;
-        background-color: white; /* Optional: adds contrast if logo is transparent */
+        margin-right: 0; /* No text follows */
+        background-color: white;
         border-radius: 2px;
         padding: 2px;
+        display: block;
     }
 
     /* Equal Height Box Styling */
@@ -108,6 +119,16 @@
     /* Author content spacing */
     .author-info p {
         margin-bottom: 0.5rem;
+    }
+    
+    /* === Calculation Box Styling === */
+    /* Remove list bullets for centered list */
+    .centered-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .centered-list li {
+        margin-bottom: 1.5rem; /* Add space between formula blocks */
     }
   </style>
 </head>
@@ -206,19 +227,19 @@
 
     <br>
 
-    <div class="content has-text-justified box">
+    <div class="content has-text-centered box">
       <h4 class="title is-5">Calculation Formula</h4>
-      <ul>
+      <ul class="centered-list">
         <li>
-          <strong>Import as (%) of GDP:</strong><br>
+          <strong>Import as (%) of GDP:</strong> Measures the monetary value of imports relative to the size of the domestic economy.<br>
           $ \text{Import (%)} = \frac{\text{Import of goods and services}}{\text{GDP}} \times 100 $
         </li>
         <li>
-          <strong>Export as (%) of GDP:</strong><br>
+          <strong>Export as (%) of GDP:</strong> Measures the monetary value of exports relative to the size of the domestic economy.<br>
           $ \text{Export (%)} = \frac{\text{Export of goods and services}}{\text{GDP}} \times 100 $
         </li>
         <li>
-          <strong>Trade as (%) of GDP:</strong><br>
+          <strong>Trade as (%) of GDP:</strong> Represents the combined weight of imports and exports, indicating overall economic openness.<br>
           $ \text{Trade (%)} = \text{Import (%)} + \text{Export (%)} = \frac{\text{Trade Volume}}{\text{GDP}} \times 100 $
         </li>
       </ul>
@@ -329,9 +350,8 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="button is-linkedin-img">
-                        <img src="./static/images/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
-                        <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/thwang125" target="_blank" class="button is-linkedin-img" aria-label="LinkedIn Profile">
+                        <img src="./static/images/linkedin.png" alt="LinkedIn" class="linkedin-logo">
                     </a>
                 </div>
             </div>
@@ -351,9 +371,8 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin-img">
-                        <img src="./static/images/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
-                        <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/" target="_blank" class="button is-linkedin-img" aria-label="LinkedIn Profile">
+                        <img src="./static/images/linkedin.png" alt="LinkedIn" class="linkedin-logo">
                     </a>
                 </div>
             </div>
